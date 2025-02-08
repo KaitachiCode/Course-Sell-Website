@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Courses</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        .course-card {
+            transition: transform 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .price-tag {
+            font-size: 1.5rem;
+            color: #198754;
+            font-weight: bold;
+        }
+
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section img {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid white;
+        }
+
+        .hero-content {
+            margin-left: 180px;
+        }
+
+        .about-person {
+            background-color: #f8f9fa;
+            padding: 50px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Master</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#courses">Courses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-primary text-white py-5">
+        <div class="container text-center">
+            <h1 class="display-4">Get Millionare Today</h1>
+            <p class="lead">Learn from most spectular person</p>
+        </div>
+    </header>
+
+    <!-- About Person Section -->
+    <section id="about" class="about-person">
+        <div class="container">
+            <h2 class="text-center mb-4">About the Instructor</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="https://via.placeholder.com/400x300" alt="Instructor" class="img-fluid rounded">
+                </div>
+                <div class="col-md-6">
+                    <h3>John Doe</h3>
+                    <p class="lead">Seller of the Course </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed
+                        cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis
+                        ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum
+                        lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
+                        inceptos himenaeos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Popular Courses</h2>
+            <div class="row g-4">
+                <!-- Course 1 -->
+                <div class="col-md-4">
+                    <div class="card course-card h-100">
+                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Web Development">
+                        <div class="card-body">
+                            <h5 class="card-title">Full Stack Web Development</h5>
+                            <p class="card-text">Master HTML, CSS, JavaScript, Node.js, and React</p>
+                            <div class="price-tag">₹1999</div>
+                            <button class="btn btn-primary mt-3" onclick="showEnrollModal('Web Development', 1999)">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 2 -->
+                <div class="col-md-4">
+                    <div class="card course-card h-100">
+                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Python">
+                        <div class="card-body">
+                            <h5 class="card-title">Python Programming</h5>
+                            <p class="card-text">From basics to advanced Python programming</p>
+                            <div class="price-tag">₹1499</div>
+                            <button class="btn btn-primary mt-3" onclick="showEnrollModal('Python Programming', 1499)">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 3 -->
+                <div class="col-md-4">
+                    <div class="card course-card h-100">
+                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Data Science">
+                        <div class="card-body">
+                            <h5 class="card-title">Data Science Fundamentals</h5>
+                            <p class="card-text">Learn Python, Pandas, Matplotlib, and Machine Learning</p>
+                            <div class="price-tag">₹2999</div>
+                            <button class="btn btn-primary mt-3" onclick="showEnrollModal('Data Science', 2999)">
+                                Enroll Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Enroll Modal -->
+    <div class="modal fade" id="enrollModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Enroll in <span id="courseTitle"></span></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="paymentForm">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="phone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="phone" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="upi://pay?pa=yourupi@handle&pn=CodeMaster&am=1999&cu=INR" class="btn btn-primary">
+                        Pay via UPI
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4" id="contact">
+        <div class="container text-center">
+            <p>&copy; 2025 SellerofWebsite. All rights reserved.</p>
+            <p>Contact: support@.com</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Razorpay Payment Integration -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <script>
+        let selectedCourse = {
+            name: '',
+            price: 0
+        };
+
+        function showEnrollModal(courseName, coursePrice) {
+            selectedCourse.name = courseName;
+            selectedCourse.price = coursePrice;
+            document.getElementById('courseTitle').textContent = courseName;
+            const enrollModal = new bootstrap.Modal(document.getElementById('enrollModal'));
+            enrollModal.show();
+        }
+    </script>
+</body>
+
+</html>
